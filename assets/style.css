@@ -1,0 +1,45 @@
+.card {
+    float: left;
+    margin: 10px;
+}
+
+body {
+    font-family: 'Crimson Text', serif;
+    background-color: #F0E7D8;
+
+}
+
+#removeButton {
+    margin-left:50%;
+    width: auto;
+    color: #F0F7F4; 
+    background-color: #A63A50;
+    border-color: #A63A50;
+}
+
+.card-header {
+    background-color: #A2E3C4;
+}
+
+.jumbotron {
+    background-color: #3C493F;
+    color: #F0F7F4;
+    margin-bottom: 0;
+}
+
+form {
+    background-color: #F0E7D8;
+    padding: 5%;
+}
+
+.form-group {
+    width: 80%;
+    margin-left:10%;
+}
+
+#submitTrain {
+    margin-left: 75%;
+    background-color: #3C493F;
+    border-color: #3C493F;
+    color: #F0F7F4;
+}
