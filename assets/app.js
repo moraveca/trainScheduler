@@ -48,7 +48,7 @@ $(document).ready(function () {
     };
 
     // When database is added to, grab that info:
-    database.ref().on("child_added", function(childSnapshot) {
+    database.ref().on("child_added", function (childSnapshot) {
 
         // Log everything that's coming out of snapshot
         console.log(childSnapshot.val());
@@ -101,7 +101,7 @@ $(document).ready(function () {
         var deleteButton = $("<a>");
         deleteButton.addClass("btn btn-danger");
         deleteButton.attr("id", "removeButton");
-        deleteButton.attr("key-value", childSnapshot.key)
+        deleteButton.attr("data-key", childSnapshot.key)
         deleteButton.text("Remove Train");
 
         var trainList = $("<ul>");
@@ -115,6 +115,7 @@ $(document).ready(function () {
         var newTrainCard = $("<div>");
 
         newTrainCard.addClass("card");
+        newTrainCard.attr("id", childSnapshot.key)
         newTrainCard.attr("style", "width: 18rem");
         newTrainCard.append(cardFeature);
         newTrainCard.append(trainList);
@@ -133,11 +134,25 @@ $(document).ready(function () {
 
     // removes train data from Firebase
     function removeTrain() {
+        // grabs key from the button that was clicked
+        var fireKey = $(this).data('key');
+        console.log(fireKey);
 
+        if (confirm("Are you sure?")) {
+            database.ref().child(fireKey).remove();
+        }
     }
 
+    // runs when a child (or train in this case) is removed
+    database.ref().on("child_removed", function (deletedSnapshot) {
+        console.log(deletedSnapshot.val());
+        console.log(deletedSnapshot.key)
 
+        var deletedTrain = deletedSnapshot.key;
 
+        $("#" + deletedTrain).remove();
+
+    });
 
 
 
